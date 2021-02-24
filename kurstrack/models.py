@@ -6,6 +6,8 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+import datetime
+from django.utils import timezone
 
 
 class Awardingbody(models.Model):
@@ -75,9 +77,13 @@ class Student(models.Model):
 
     class Meta:
         db_table = 'student'
+        ordering = ("last_name", "first_name")
     
     def __str__(self):
-        return f"{self.last_name}, {self.first_name}"
+        return f"{self.first_name}" + ' ' + f"{self.last_name}"
+
+    def show_address(self):
+        return f"{self.address}"
 
 
 class Instructorinfo(models.Model):
@@ -115,7 +121,7 @@ class Registerinfo(models.Model):
         db_table = 'registerinfo'
 
     def __str__(self):
-        return f"{self.last_name}, {self.first_name}"  
+        return f"{self.first_name}" + ' ' + f"{self.last_name}"
 
 
 class CertificateType(models.Model):
@@ -195,7 +201,7 @@ class Webcourseinfo(models.Model):
     
     def __str__(self):
         return f"{self.w_course_id}"
-
+    
 
 class Coursecategory(models.Model):
     cat = models.ForeignKey(Category, models.DO_NOTHING, blank=True, null=True)
@@ -205,7 +211,7 @@ class Coursecategory(models.Model):
         db_table = 'coursecategory'
     
     def __str__(self):
-        return f"{self.cat}"
+        return f"{self.course}, {self.cat}"
 
 
 class Coursedesignhaswebcoursesinfo(models.Model):
@@ -244,6 +250,9 @@ class Courseorder(models.Model):
 
     class Meta:
         db_table = 'courseorder'
+    
+    def __str__(self):
+        return f"{self.order_no}, {self.w_course}, {self.quantity}, {self.shipping_method}, {self.payment_method}"
 
 
 class Courseslevel(models.Model):
@@ -305,6 +314,9 @@ class Log(models.Model):
 
     class Meta:
         db_table = 'log'
+
+    def __str__(self):
+        return f"{self.add_date}, {self.log_table}, {self.field}, {self.old_value}"
 
 
 class Module(models.Model):
@@ -373,6 +385,9 @@ class Reeddailysale(models.Model):
     class Meta:
         db_table = 'reeddailysale'
 
+    def __str__(self):
+        return f"{self.date}, {self.order_id}, {self.unit_sold}, {self.revenue}"
+
 
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
@@ -406,6 +421,9 @@ class WebcoursesinfoHasQuizzes(models.Model):
 
     class Meta:
         db_table = 'webcoursesinfo_has_quizzes'
+    
+    def __str__(self):
+        return f"{self.course}"
 
 
 class Webdailysale(models.Model):
@@ -421,6 +439,7 @@ class Webdailysale(models.Model):
         db_table = 'webdailysale'
     
     def __str__(self):
-        return f"{self.date}, {self.order_id}, {self.course_id}, {self.unit_sold}, {self.revenue}, {self.sold_course}, {self.stu}"
+        return f"{self.date}, {self.order_id}, {self.sold_course}, {self.unit_sold}, {self.revenue}"
+
 
 
