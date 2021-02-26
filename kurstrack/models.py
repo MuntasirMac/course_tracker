@@ -16,6 +16,7 @@ class Awardingbody(models.Model):
 
     class Meta:
         db_table = 'awardingbody'
+        verbose_name_plural = 'Awarding Bodies'
     
     def __str__(self):
         return f"{self.name}"
@@ -27,6 +28,7 @@ class WhoCourseFor(models.Model):
 
     class Meta:
         db_table = 'who_course_for'
+        verbose_name_plural = 'Who Course For'
 
     def __str__(self):
         return f"{self.who_course_for}"
@@ -37,6 +39,7 @@ class WhyChoose(models.Model):
 
     class Meta:
         db_table = 'why_choose'
+        verbose_name_plural = 'Why Should Choose'
 
     def __str__(self):
         return f"{self.whychoose_id}"
@@ -48,6 +51,7 @@ class Category(models.Model):
 
     class Meta:
         db_table = 'category'
+        verbose_name_plural = 'Categories'
     
     def __str__(self):
         return f"{self.category}"
@@ -59,6 +63,7 @@ class Level(models.Model):
 
     class Meta:
         db_table = 'level'
+        verbose_name_plural = 'Levels'
     
     def __str__(self):
         return f"{self.level_name}"
@@ -78,6 +83,7 @@ class Student(models.Model):
     class Meta:
         db_table = 'student'
         ordering = ("last_name", "first_name")
+        verbose_name_plural = 'Students'
     
     def __str__(self):
         return f"{self.first_name}" + ' ' + f"{self.last_name}"
@@ -100,6 +106,7 @@ class Instructorinfo(models.Model):
 
     class Meta:
         db_table = 'instructorinfo'
+        verbose_name_plural = 'Instructors Info'
     
     def __str__(self):
         return f"{self.last_name}, {self.first_name}"
@@ -119,6 +126,7 @@ class Registerinfo(models.Model):
 
     class Meta:
         db_table = 'registerinfo'
+        verbose_name_plural = 'Register Info'
 
     def __str__(self):
         return f"{self.first_name}" + ' ' + f"{self.last_name}"
@@ -131,6 +139,7 @@ class CertificateType(models.Model):
 
     class Meta:
         db_table = 'certificate_type'
+        verbose_name_plural = 'Certificate Types'
 
     def __str__(self):
         return f"{self.type}"
@@ -142,6 +151,7 @@ class Coursedesign(models.Model):
 
     class Meta:
         db_table = 'coursedesign'
+        verbose_name_plural = 'Course Designs'
 
     def __str__(self):
         return f"{self.design_type}"
@@ -154,6 +164,7 @@ class Cart(models.Model):
 
     class Meta:
         db_table = 'cart'
+        verbose_name_plural = 'Cart'
 
     def __str__(self):
         return f"{self.description}"
@@ -166,6 +177,7 @@ class Certification(models.Model):
 
     class Meta:
         db_table = 'certification'
+        verbose_name_plural = 'Certification'
 
     def __str__(self):
         return f"{self.certificate_name}"
@@ -198,6 +210,7 @@ class Webcourseinfo(models.Model):
 
     class Meta:
         db_table = 'webcourseinfo'
+        verbose_name_plural = 'Course Info'
     
     def __str__(self):
         return f"{self.w_course_id}"
@@ -209,6 +222,7 @@ class Coursecategory(models.Model):
 
     class Meta:
         db_table = 'coursecategory'
+        verbose_name_plural = 'Category Of Courses'
     
     def __str__(self):
         return f"{self.course}, {self.cat}"
@@ -220,6 +234,7 @@ class Coursedesignhaswebcoursesinfo(models.Model):
 
     class Meta:
         db_table = 'coursedesignhaswebcoursesinfo'
+        verbose_name_plural = 'Delivery Mode'
 
 
 class Coursemodule(models.Model):
@@ -230,6 +245,7 @@ class Coursemodule(models.Model):
 
     class Meta:
         db_table = 'coursemodule'
+        verbose_name_plural = 'Courses Module'
     
     def __str__(self):
         return f"{self.module}"
@@ -250,6 +266,7 @@ class Courseorder(models.Model):
 
     class Meta:
         db_table = 'courseorder'
+        verbose_name_plural = 'Orders'
     
     def __str__(self):
         return f"{self.order_no}, {self.w_course}, {self.quantity}, {self.shipping_method}, {self.payment_method}"
@@ -261,6 +278,7 @@ class Courseslevel(models.Model):
 
     class Meta:
         db_table = 'courseslevel'
+        verbose_name_plural = 'Level Of Courses'
 
     def __str__(self):
         return f"{self.w_course}, {self.level}"
@@ -280,6 +298,7 @@ class Grouponcoursesinfo(models.Model):
 
     class Meta:
         db_table = 'grouponcoursesinfo'
+        verbose_name_plural = 'GroupOn Courses'
 
     def __str__(self):
         return f"{self.course_id}, {self.title}"
@@ -296,6 +315,7 @@ class Groupondailysale(models.Model):
 
     class Meta:
         db_table = 'groupondailysale'
+        verbose_name_plural = 'GroupOn Sales'
     
     def __str__(self):
         return f"{self.date}, {self.course_id}, {self.unit_sold}, {self.revenue}"
@@ -314,6 +334,7 @@ class Log(models.Model):
 
     class Meta:
         db_table = 'log'
+        verbose_name_plural = 'Logs'
 
     def __str__(self):
         return f"{self.add_date}, {self.log_table}, {self.field}, {self.old_value}"
@@ -327,6 +348,8 @@ class Module(models.Model):
 
     class Meta:
         db_table = 'module'
+        verbose_name = 'Module'
+        verbose_name_plural = 'Modules'
     
     def __str__(self):
         return f"{self.module_name}"
@@ -340,6 +363,8 @@ class Quizes(models.Model):
 
     class Meta:
         db_table = 'quizes'
+        verbose_name_plural = 'Quizes'
+
     def __str__(self):
         return f"{self.question}"
 
@@ -368,6 +393,7 @@ class Reedcoursesinfo(models.Model):
 
     class Meta:
         db_table = 'reedcoursesinfo'
+        verbose_name_plural = 'REED Courses'
 
     def __str__(self):
         return f"{self.title}"
@@ -384,9 +410,10 @@ class Reeddailysale(models.Model):
 
     class Meta:
         db_table = 'reeddailysale'
+        verbose_name_plural = 'REED Sales'
 
     def __str__(self):
-        return f"{self.date}, {self.order_id}, {self.unit_sold}, {self.revenue}"
+        return f"{self.date}" + ' ' + f"{self.order_id}" + ' ' + f"{self.unit_sold}" + ' ' + f"{self.revenue}"
 
 
 class Review(models.Model):
@@ -398,9 +425,10 @@ class Review(models.Model):
 
     class Meta:
         db_table = 'review'
+        verbose_name_plural = 'Reviews'
 
     def __str__(self):
-        return f"{self.reviewed_course}, {self.review_text}"
+        return f"{self.reviewed_course}" + ' '  + f"{self.review_text}"
 
 
 class Unit(models.Model):
@@ -410,23 +438,27 @@ class Unit(models.Model):
 
     class Meta:
         db_table = 'unit'
+        verbose_name = 'Unit'
+        verbose_name_plural = 'Units'
     
     def __str__(self):
         return f"{self.unit_name}"
 
 
-class WebcoursesinfoHasQuizzes(models.Model):
+class WebCourseQuiz(models.Model):
     course = models.ForeignKey(Webcourseinfo, on_delete=models.CASCADE)
     question = models.ForeignKey(Quizes, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'webcoursesinfo_has_quizzes'
+        verbose_name = 'Quiz Of Course'
+        verbose_name_plural = 'Quizes of Courses'
     
     def __str__(self):
         return f"{self.course}"
 
 
-class Webdailysale(models.Model):
+class WebSale(models.Model):
     date = models.DateField(primary_key=True)
     course_id = models.IntegerField(blank=True, null=True)
     order_id = models.IntegerField(blank=True, null=True)
@@ -437,6 +469,7 @@ class Webdailysale(models.Model):
 
     class Meta:
         db_table = 'webdailysale'
+        verbose_name_plural = 'Sales of Courses'
     
     def __str__(self):
         return f"{self.date}, {self.order_id}, {self.sold_course}, {self.unit_sold}, {self.revenue}"
